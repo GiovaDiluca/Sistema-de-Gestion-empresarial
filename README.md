@@ -1,1 +1,1 @@
-# Sistema-de-Gesti-n-empresarial
+# Sistema-de-Gestion-empresarial
