@@ -1,0 +1,6 @@
+CREATE TABLE usuarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    usuario TEXT NOT NULL,
+    clave TEXT NOT NULL
+);
+

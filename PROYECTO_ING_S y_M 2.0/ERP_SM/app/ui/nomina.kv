@@ -1,0 +1,30 @@
+# app/ui/nomina.kv
+<NominaScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Spinner:
+            id: empleado_spinner
+            text: 'Seleccionar Empleado'
+        BoxLayout:
+            orientation: 'horizontal'
+            TextInput:
+                id: mes_input
+                hint_text: 'Mes (YYYY-MM)'
+            TextInput:
+                id: bruto_input
+                hint_text: 'Salario Bruto'
+                input_filter: 'float'
+            TextInput:
+                id: deducciones_input
+                hint_text: 'Deducciones'
+                input_filter: 'float'
+            TextInput:
+                id: impuestos_input
+                hint_text: 'Impuestos'
+                input_filter: 'float'
+        Button:
+            text: 'Calcular y Generar Nómina'
+            on_press: root.generar_nomina(self)
+        Button:
+            text: 'Volver al Dashboard'
+            on_press: root.volver(self)

@@ -1,0 +1,37 @@
+<EmpleadosScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            size_hint_y: 0.3
+            TextInput:
+                id: nombre_input
+                hint_text: 'Nombre'
+            TextInput:
+                id: apellido_input
+                hint_text: 'Apellido'
+            TextInput:
+                id: salario_input
+                hint_text: 'Salario'
+                input_filter: 'float'
+            TextInput:
+                id: fecha_input
+                hint_text: 'Fecha Ingreso'
+            TextInput:
+                id: puesto_input
+                hint_text: 'Puesto'
+
+        Button:
+            text: 'Agregar Empleado'
+            on_release: root.agregar_empleado()
+
+        ScrollView:
+            GridLayout:
+                id: empleados_layout
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: 'Volver al Dashboard'
+            on_release: root.volver()

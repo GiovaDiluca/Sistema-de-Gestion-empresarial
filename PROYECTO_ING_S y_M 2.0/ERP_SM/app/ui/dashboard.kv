@@ -1,0 +1,13 @@
+# app/ui/dashboard.kv
+<DashboardScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Bienvenido a ERP S&M'
+            font_size: 24
+        Button:
+            text: 'Gestión de Empleados'
+            on_press: root.go_to_empleados(self)
+        Button:
+            text: 'Nómina'
+            on_press: root.go_to_nomina(self)
