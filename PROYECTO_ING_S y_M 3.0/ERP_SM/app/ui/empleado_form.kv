@@ -1,0 +1,95 @@
+<EmpleadoFormScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: "Registro de Empleado"
+            font_size: 22
+            size_hint_y: None
+            height: 40
+
+        Label:
+            id: lbl_estado
+            text: ""
+            color: 1,0,0,1
+            size_hint_y: None
+            height: 25
+
+        ScrollView:
+            GridLayout:
+                cols: 1
+                spacing: 10
+                size_hint_y: None
+                height: self.minimum_height
+
+                TextInput:
+                    id: input_nombre
+                    hint_text: "Nombre"
+                    size_hint_y: None
+                    height: 40
+
+                TextInput:
+                    id: input_apellido
+                    hint_text: "Apellido"
+                    size_hint_y: None
+                    height: 40
+
+                TextInput:
+                    id: input_cedula
+                    hint_text: "Cédula"
+                    size_hint_y: None
+                    height: 40
+
+                TextInput:
+                    id: input_telefono
+                    hint_text: "Teléfono"
+                    size_hint_y: None
+                    height: 40
+
+                TextInput:
+                    id: input_email
+                    hint_text: "Email"
+                    size_hint_y: None
+                    height: 40
+
+                TextInput:
+                    id: input_nivel
+                    hint_text: "Nivel de instrucción"
+                    size_hint_y: None
+                    height: 40
+
+                TextInput:
+                    id: input_puesto
+                    hint_text: "Puesto"
+                    size_hint_y: None
+                    height: 40
+
+                TextInput:
+                    id: input_salario
+                    hint_text: "Salario"
+                    input_filter: "float"
+                    size_hint_y: None
+                    height: 40
+
+                TextInput:
+                    id: input_fecha
+                    hint_text: "Fecha ingreso (YYYY-MM-DD)"
+                    size_hint_y: None
+                    height: 40
+
+                Button:
+                    text: "Guardar"
+                    size_hint_y: None
+                    height: 45
+                    on_release: root.guardar()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            spacing: 10
+
+            Button:
+                text: "Volver"
+                on_release: root.volver()

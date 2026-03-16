@@ -1,0 +1,45 @@
+<EmpleadosScreen>:
+    name: "empleados"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 15
+        spacing: 10
+
+        # 🔹 Barra superior
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            spacing: 10
+
+            Button:
+                text: "← Dashboard"
+                size_hint_x: None
+                width: 150
+                on_press: root.volver_dashboard()
+
+            Label:
+                text: "EMPLEADOS"
+                font_size: 20
+
+            Button:
+                text: "+ Nuevo"
+                size_hint_x: None
+                width: 120
+                on_press: root.abrir_formulario()
+            
+            Button:
+                text: "Importar desde Excel"
+                size_hint_y: None
+                height: 50
+                on_release: root.importar_excel()
+
+
+        # 🔹 Lista empleados
+        ScrollView:
+            BoxLayout:
+                id: lista_empleados
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 5
