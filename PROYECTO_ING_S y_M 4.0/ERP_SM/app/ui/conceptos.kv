@@ -1,0 +1,63 @@
+<ConceptosScreen>:
+    name: "conceptos"
+
+    BoxLayout:
+        padding: 10
+        spacing: 10
+
+        # FORMULARIO
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_x: 0.4
+            spacing: 10
+
+            Label:
+                text: "Conceptos de Nómina"
+                font_size: 18
+
+            TextInput:
+                id: nombre
+                hint_text: "Nombre"
+
+            Spinner:
+                id: tipo
+                text: "ingreso"
+                values: ["ingreso", "deduccion"]
+
+            TextInput:
+                id: valor
+                hint_text: "Valor"
+
+            BoxLayout:
+                size_hint_y: None
+                height: 40
+
+                Label:
+                    text: "¿Porcentaje?"
+
+                CheckBox:
+                    id: es_porcentaje
+
+            Button:
+                text: "Guardar"
+                on_release: root.guardar()
+
+            Button:
+                text: "Actualizar"
+                on_release: root.actualizar()
+
+            Button:
+                text: "Eliminar"
+                on_release: root.eliminar()
+
+            Button:
+                text: "Volver"
+                on_release: root.volver()
+
+        # LISTA
+        ScrollView:
+            BoxLayout:
+                id: lista_conceptos
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height

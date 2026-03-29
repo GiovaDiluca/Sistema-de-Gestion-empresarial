@@ -1,0 +1,40 @@
+<DashboardScreen>:
+    BoxLayout:
+        orientation: "horizontal"
+
+        # MENU LATERAL
+        BoxLayout:
+            size_hint_x: 0.2
+            orientation: "vertical"
+            padding: 10
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgb: .1,.1,.1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "S&M"
+                font_size: 22
+                size_hint_y: None
+                height: 60
+
+            Button:
+                text: "Empleados"
+                on_press: root.manager.current = "empleados"
+
+            Button:
+                text: "Nómina"
+                on_release: app.root.current = "nomina"    
+
+            Button:
+                text: "Conceptos"
+                on_release: app.root.current = "conceptos"
+
+        # AREA CENTRAL
+        BoxLayout:
+            Label:
+                text: "SOLUCIONES & MAS"
+                font_size: 30
