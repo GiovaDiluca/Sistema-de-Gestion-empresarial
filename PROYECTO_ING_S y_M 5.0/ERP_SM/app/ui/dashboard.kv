@@ -1,0 +1,84 @@
+<DashboardScreen>:
+    MDBoxLayout:
+        orientation: "horizontal"
+        md_bg_color: app.theme_cls.bg_light
+
+        # 🔹 BARRA LATERAL (Sidebar)
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_x: 0.2
+            padding: "16dp"
+            spacing: "16dp"
+            md_bg_color: app.theme_cls.primary_color
+
+            MDLabel:
+                text: "SOLUCIONES & MÁS"
+                font_style: "H6"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                size_hint_y: None
+                height: "60dp"
+                bold: True
+                halign: "center"
+
+            MDFillRoundFlatButton:
+                text: "Empleados"
+                size_hint_x: 1
+                text_color: 1, 1, 1, 1
+                md_bg_color: app.theme_cls.primary_dark
+                on_press: root.manager.current = "empleados"
+
+            MDFillRoundFlatButton:
+                text: "Nómina"
+                size_hint_x: 1
+                text_color: 1, 1, 1, 1
+                md_bg_color: app.theme_cls.primary_dark
+                on_release: app.root.current = "nomina"    
+
+            MDFillRoundFlatButton:
+                text: "Conceptos"
+                size_hint_x: 1
+                text_color: 1, 1, 1, 1
+                md_bg_color: app.theme_cls.primary_dark
+                on_release: app.root.current = "conceptos"
+
+            MDFillRoundFlatButton:
+                text: "Contratos"
+                size_hint_x: 1
+                text_color: 1, 1, 1, 1
+                md_bg_color: app.theme_cls.primary_dark
+                on_release: app.root.current = "contratos"
+
+            Widget: # Spacer para empujar los botones hacia arriba
+
+        # 🔹 AREA CENTRAL (Main Content)
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "24dp"
+
+            MDCard:
+                padding: "20dp"
+                radius: [15, 15, 15, 15]
+                elevation: 4
+                md_bg_color: 1, 1, 1, 1
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    spacing: "10dp"
+
+                    MDLabel:
+                        text: "BIENVENIDO AL DASHBOARD"
+                        font_style: "H4"
+                        theme_text_color: "Primary"
+                        halign: "center"
+                        bold: True
+                    
+                    MDLabel:
+                        text: "Sistema de Gestión Empresarial - ERP"
+                        font_style: "Subtitle1"
+                        theme_text_color: "Secondary"
+                        halign: "center"
+                        
+                    Image:
+                        source: "icono_empresa.png" # Si no existe, no casheará, o podemos omitirlo. Lo dejaré como un widget en blanco en lugar de Image.
+                        opacity: 0

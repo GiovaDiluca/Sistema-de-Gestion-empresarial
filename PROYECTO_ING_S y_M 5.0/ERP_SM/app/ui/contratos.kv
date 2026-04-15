@@ -1,0 +1,112 @@
+<ContratosScreen>:
+    empleado_spinner: spinner_emp
+    plantilla_input: txt_plantilla
+    vista_previa_input: txt_vista_previa
+
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: app.theme_cls.bg_light
+        
+        MDTopAppBar:
+            title: "Gestión de Contratos"
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: app.root.current_screen.manager.current == "dashboard" if app.root else None]] # O un callback en python. Pero ya tenemos un botón debajo, así que esto es visual
+            # Como ContratosScreen no tiene un `volver` propuesto en root, usaremos app.root.current = 'dashboard'
+            left_action_items: [["arrow-left", lambda x: setattr(app.root, "current", "dashboard")]]
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "20dp"
+            spacing: "15dp"
+
+            MDCard:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: "80dp"
+                padding: "15dp"
+                spacing: "20dp"
+                elevation: 3
+                radius: [15, 15, 15, 15]
+
+                MDLabel:
+                    text: "Seleccionar Empleado:"
+                    size_hint_x: 0.3
+                    bold: True
+                    valign: "center"
+
+                Spinner:
+                    id: spinner_emp
+                    text: "Seleccione un empleado"
+                    values: []
+                    size_hint_x: 0.7
+                    on_text: root.seleccionar_empleado(self.text)
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: "20dp"
+
+                # 🔹 Izquierda: Plantilla
+                MDCard:
+                    orientation: "vertical"
+                    padding: "15dp"
+                    spacing: "10dp"
+                    elevation: 3
+                    radius: [15, 15, 15, 15]
+                    
+                    MDLabel:
+                        text: "Plantilla del Contrato"
+                        font_style: "Subtitle1"
+                        bold: True
+                        size_hint_y: None
+                        height: "30dp"
+
+                    TextInput:
+                        id: txt_plantilla
+                        multiline: True
+                        font_size: "14sp"
+                        hint_text: "Escriba o pegue la plantilla aquí..."
+                        background_color: 0.95, 0.95, 0.95, 1
+                        cursor_color: 0, 0, 0, 1
+                        foreground_color: 0, 0, 0, 1
+
+                    MDRaisedButton:
+                        text: "Generar Vista Previa"
+                        size_hint_x: 1
+                        height: "50dp"
+                        md_bg_color: app.theme_cls.primary_color
+                        on_release: root.generar_vista_previa()
+
+                # 🔹 Derecha: Vista Previa
+                MDCard:
+                    orientation: "vertical"
+                    padding: "15dp"
+                    spacing: "10dp"
+                    elevation: 3
+                    radius: [15, 15, 15, 15]
+
+                    MDLabel:
+                        text: "Vista Previa"
+                        font_style: "Subtitle1"
+                        bold: True
+                        size_hint_y: None
+                        height: "30dp"
+
+                    TextInput:
+                        id: txt_vista_previa
+                        multiline: True
+                        font_size: "14sp"
+                        readonly: True
+                        background_color: 0.9, 0.9, 0.9, 1
+                        hint_text: "La vista previa aparecerá aquí..."
+                        cursor_color: 0, 0, 0, 1
+                        foreground_color: 0.2, 0.2, 0.2, 1
+
+                    MDRectangleFlatIconButton:
+                        icon: "file-pdf-box"
+                        text: "Exportar a PDF"
+                        size_hint_x: 1
+                        height: "50dp"
+                        text_color: 0.1, 0.6, 0.1, 1
+                        line_color: 0.1, 0.6, 0.1, 1
+                        icon_color: 0.1, 0.6, 0.1, 1
+                        on_release: root.exportar_pdf()

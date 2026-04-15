@@ -1,0 +1,29 @@
+<EmpleadosScreen>:
+    name: "empleados"
+    
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: app.theme_cls.bg_light
+        
+        MDTopAppBar:
+            title: "Gestión de Empleados"
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: root.volver_dashboard()]]
+            right_action_items: [["plus", lambda x: root.abrir_formulario(), "Nuevo Empleado"], ["file-excel", lambda x: root.importar_excel(), "Importar Excel"]]
+
+        MDBoxLayout:
+            padding: "20dp"
+            
+            MDCard:
+                orientation: "vertical"
+                padding: "10dp"
+                elevation: 3
+                radius: [15, 15, 15, 15]
+                
+                ScrollView:
+                    MDBoxLayout:
+                        id: lista_empleados
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: "8dp"
