@@ -1,0 +1,68 @@
+<ConfiguracionScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: app.theme_cls.bg_light
+        spacing: "10dp"
+
+        # 🔹 HEADER SUPERIOR
+        MDTopAppBar:
+            title: "Configuración de la Empresa"
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: root.volver()]]
+            md_bg_color: app.theme_cls.primary_color
+            specific_text_color: 1, 1, 1, 1
+
+        # 🔹 CONTENIDO CENTRAL
+        ScrollView:
+            MDBoxLayout:
+                orientation: "vertical"
+                padding: "24dp"
+                spacing: "20dp"
+                size_hint_y: None
+                height: self.minimum_height
+
+                MDCard:
+                    orientation: "vertical"
+                    padding: "20dp"
+                    spacing: "15dp"
+                    size_hint_y: None
+                    height: "400dp"
+                    radius: [15, 15, 15, 15]
+                    elevation: 3
+                    md_bg_color: 1, 1, 1, 1
+
+                    MDLabel:
+                        text: "Datos Fiscales y Contacto"
+                        font_style: "H6"
+                        theme_text_color: "Primary"
+                        bold: True
+                        size_hint_y: None
+                        height: "30dp"
+                        
+                    MDTextField:
+                        id: nombre_input
+                        hint_text: "Nombre Comercial / Razón Social *"
+                        mode: "rectangle"
+                        
+                    MDTextField:
+                        id: rif_input
+                        hint_text: "R.I.F. *"
+                        mode: "rectangle"
+                        
+                    MDTextField:
+                        id: telefono_input
+                        hint_text: "Teléfono"
+                        mode: "rectangle"
+
+                    MDTextField:
+                        id: direccion_input
+                        hint_text: "Dirección Fiscal"
+                        mode: "rectangle"
+                        multiline: True
+
+                    MDFillRoundFlatButton:
+                        text: "GUARDAR CAMBIOS"
+                        md_bg_color: app.theme_cls.primary_dark
+                        text_color: 1, 1, 1, 1
+                        pos_hint: {"center_x": .5}
+                        on_release: root.guardar_datos()

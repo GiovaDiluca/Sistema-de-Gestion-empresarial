@@ -1,0 +1,141 @@
+<NominaScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: app.theme_cls.bg_light
+        
+        MDTopAppBar:
+            title: "Módulo de Nómina"
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: root.volver()]]
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            padding: "20dp"
+            spacing: "20dp"
+
+            # 🔹 PANEL IZQUIERDO (FORMULARIO)
+            MDCard:
+                orientation: "vertical"
+                size_hint_x: 0.35
+                padding: "20dp"
+                spacing: "15dp"
+                elevation: 3
+                radius: [15, 15, 15, 15]
+
+                MDLabel:
+                    text: "Cálculo de Nómina"
+                    font_style: "H6"
+                    size_hint_y: None
+                    height: "30dp"
+                    bold: True
+
+                Spinner:
+                    id: spinner_empleados
+                    text: "Seleccione empleado"
+                    size_hint_y: None
+                    height: "45dp"
+
+                Spinner:
+                    id: spinner_periodo
+                    text: "Seleccione período"
+                    values: ["Semanal", "Quincenal", "Mensual"]
+                    size_hint_y: None
+                    height: "45dp"
+
+                MDRectangleFlatButton:
+                    id: btn_fecha
+                    text: "Seleccione fecha"
+                    size_hint_x: 1
+                    on_release: root.mostrar_calendario()
+
+                Widget: # Spacer
+                    size_hint_y: 1
+
+                MDRaisedButton:
+                    text: "Calcular"
+                    size_hint_x: 1
+                    md_bg_color: app.theme_cls.primary_color
+                    on_release: root.calcular()
+
+                MDRectangleFlatButton:
+                    text: "Guardar Nómina"
+                    size_hint_x: 1
+                    on_release: root.guardar()
+
+                MDRectangleFlatButton:
+                    text: "Generar PDF"
+                    size_hint_x: 1
+                    text_color: 0.8, 0, 0, 1
+                    line_color: 0.8, 0, 0, 1
+                    on_release: root.generar_pdf()
+
+            # 🔹 PANEL DERECHO (RECIBO)
+            MDCard:
+                orientation: "vertical"
+                padding: "20dp"
+                spacing: "10dp"
+                elevation: 3
+                radius: [15, 15, 15, 15]
+
+                MDLabel:
+                    id: encabezado_nomina
+                    text: "Recibo de Pago"
+                    font_style: "H6"
+                    bold: True
+                    halign: "center"
+                    size_hint_y: None
+                    height: "40dp"
+
+                MDLabel:
+                    text: "SUELDO BASE"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Secondary"
+
+                MDLabel:
+                    id: sueldo_base_lbl
+                    text: "$0.00"
+                    font_style: "H5"
+                    bold: True
+
+                MDSeparator:
+
+                MDLabel:
+                    text: "INGRESOS"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Primary"
+
+                ScrollView:
+                    size_hint_y: 0.3
+                    MDGridLayout:
+                        id: tabla_ingresos
+                        cols: 2
+                        size_hint_y: None
+                        height: self.minimum_height
+                        row_default_height: "35dp"
+                        row_force_default: True
+
+                MDLabel:
+                    text: "DEDUCCIONES"
+                    font_style: "Subtitle2"
+                    theme_text_color: "Error"
+
+                ScrollView:
+                    size_hint_y: 0.3
+                    MDGridLayout:
+                        id: tabla_deducciones
+                        cols: 2
+                        size_hint_y: None
+                        height: self.minimum_height
+                        row_default_height: "35dp"
+                        row_force_default: True
+                        
+                MDSeparator:
+
+                MDLabel:
+                    id: resumen_totales
+                    text: "NETO A PAGAR: $0.00"
+                    font_style: "H5"
+                    bold: True
+                    halign: "right"
+                    size_hint_y: None
+                    height: "50dp"

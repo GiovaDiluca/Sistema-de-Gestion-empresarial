@@ -1,0 +1,99 @@
+<ConceptosScreen>:
+    name: "conceptos"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: app.theme_cls.bg_light
+        
+        MDTopAppBar:
+            title: "Conceptos de Nómina"
+            elevation: 2
+            left_action_items: [["arrow-left", lambda x: root.volver()]]
+
+        MDBoxLayout:
+            padding: "20dp"
+            spacing: "20dp"
+
+            # 🔹 FORMULARIO
+            MDCard:
+                orientation: "vertical"
+                size_hint_x: 0.4
+                padding: "20dp"
+                spacing: "15dp"
+                elevation: 3
+                radius: [15, 15, 15, 15]
+
+                MDLabel:
+                    text: "Registrar Concepto"
+                    font_style: "H6"
+                    size_hint_y: None
+                    height: "30dp"
+                    bold: True
+
+                MDTextField:
+                    id: nombre
+                    hint_text: "Nombre"
+                    mode: "rectangle"
+
+                Spinner:
+                    id: tipo
+                    text: "ingreso"
+                    values: ["ingreso", "deduccion"]
+                    size_hint_y: None
+                    height: "45dp"
+
+                MDTextField:
+                    id: valor
+                    hint_text: "Valor"
+                    mode: "rectangle"
+                    input_filter: "float"
+
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: "40dp"
+                    spacing: "10dp"
+
+                    MDLabel:
+                        text: "¿Porcentaje?"
+                        valign: "center"
+                        halign: "left"
+
+                    MDCheckbox:
+                        id: es_porcentaje
+                        size_hint: None, None
+                        size: "48dp", "48dp"
+
+                Widget: # Spacer
+                    size_hint_y: 1
+
+                MDRaisedButton:
+                    text: "Guardar"
+                    size_hint_x: 1
+                    on_release: root.guardar()
+
+                MDRectangleFlatButton:
+                    text: "Actualizar"
+                    size_hint_x: 1
+                    on_release: root.actualizar()
+
+                MDRectangleFlatButton:
+                    text: "Eliminar"
+                    size_hint_x: 1
+                    text_color: 0.8, 0, 0, 1
+                    line_color: 0.8, 0, 0, 1
+                    on_release: root.eliminar()
+
+            # 🔹 LISTA
+            MDCard:
+                orientation: "vertical"
+                padding: "10dp"
+                elevation: 3
+                radius: [15, 15, 15, 15]
+
+                ScrollView:
+                    MDBoxLayout:
+                        id: lista_conceptos
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: "8dp"
